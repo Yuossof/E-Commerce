@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS categories (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid (),
+    parent_id UUID REFERENCES categories(id) ON DELETE RESTRICT,
+    name VARCHAR(250) NOT NULL,
+    slug VARCHAR(200) NOT NULL UNIQUE,
+    description VARCHAR(400) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP WITH TIME ZONE,
+    updated_at TIMESTAMP WITH TIME ZONE
+);
